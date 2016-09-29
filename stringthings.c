@@ -50,10 +50,44 @@ int mystrcmp(char s1[], char s2[]) {
     return (mystrlen(s1) - mystrlen(s2));
 }
 
-//char * mystrchr() {
-//    char *sadpointer = ":'(";
-//    return sadpointer;
-//}
+char * mystrchr(char string[], char c) {
+    char *sp = string;
+    while (*sp) {
+        if (*sp == c) {
+            return sp;
+        }
+        sp++;
+    }
+    return NULL;
+}
+
+char * mystrstr(char big[], char little[]) {
+    char *bp = big;
+    char *lp = little;
+    char *sp = NULL;
+    while (*bp) {
+        if (!(*lp)) {
+            return sp;
+        }
+        if (*bp == *lp && sp == NULL) {
+            sp = bp;
+            bp++;
+            lp++;
+        }
+        else if (*bp == *lp && sp != NULL) {
+            bp++;
+            lp++;
+        }
+        else if (*bp != *lp && sp == NULL) {
+            bp++;
+         }
+        else if (*bp != *lp && sp != NULL) {
+            sp = NULL;
+            lp = little;
+        }
+    }
+    return sp;
+}
 
 int main() {
     //feelin dr. seuss-y today
@@ -91,5 +125,10 @@ int main() {
     printf("mystrcmp s3 & s4: %d \n\n", mystrcmp(s3, s4));
 
     //testing locate character
-    //on the next episode of dbz...
+    printf("strchr w in s1: %c \n", *strchr(s1, 'w'));
+    printf("mystrchr w in s1: %c \n\n", *mystrchr(s1, 'w'));
+
+    //testing substring
+    printf("strstr 'will' in s1: %c \n", *strstr(s1, "will"));
+    printf("mystrstr 'will' in s1: %c \n", *mystrstr(s1, "will"));
 }
