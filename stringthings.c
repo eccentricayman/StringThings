@@ -113,6 +113,7 @@ int main() {
     printf("mystrcpy s2 -> s3: %s \n\n", s3);
 
     //testing concatenate
+    printf("Testing concatenate... \n");
     strcat(s3, s2);
     printf("strcat s2 + s3 -> s3: %s \n", s3);
 
@@ -121,14 +122,19 @@ int main() {
     printf("mystrcat s2 + s4 -> s4: %s \n\n", s4);
 
     //testing compare
+    printf("Testing compare... \n");
     printf("strcmp s3 & s4: %d \n", strcmp(s3, s4));
     printf("mystrcmp s3 & s4: %d \n\n", mystrcmp(s3, s4));
 
     //testing locate character
+    printf("Testing locate character... \n");
     printf("strchr w in s1: %c \n", *strchr(s1, 'w'));
     printf("mystrchr w in s1: %c \n\n", *mystrchr(s1, 'w'));
 
     //testing substring
+    printf("Testing substring... \n");
     printf("strstr 'will' in s1: %c \n", *strstr(s1, "will"));
     printf("mystrstr 'will' in s1: %c \n", *mystrstr(s1, "will"));
+
+    //i can't remember the last time i put this much effort into making a neat testing for main()
 }
