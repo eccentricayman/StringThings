@@ -16,7 +16,19 @@ int mystrlen(char string[]) {
     return ctr;
 }
 
-void mystrcpy(char destination[], char source[]) {
+char * mystrcpy(char destination[], char source[]) {
+    char *destp = destination;
+    char *srcp = source;
+    while (*srcp) {
+        *destp = *srcp;
+        srcp++;
+        destp++;
+    }
+    *destp = '\0';
+    return destination;
+}
+
+char * mystrncpy(char destination[], char source[]) {
     char *destp = destination;
     char *srcp = source;
     while (*srcp) {
@@ -28,9 +40,10 @@ void mystrcpy(char destination[], char source[]) {
         *destp = '\0';
         destp++;
     }
+    return destination;
 }
 
-void mystrcat(char destination[], char source[]) {
+char * mystrcat(char destination[], char source[]) {
     char *dp = destination;
     char *sp = source;
     int ctr = 0;
@@ -43,7 +56,24 @@ void mystrcat(char destination[], char source[]) {
         dp++;
         sp++;
     }
-    
+    return destination;
+}
+
+char * mystrncat(char destination[], char source[], int max) {
+    char *dp = destination;
+    char *sp = source;
+    int ctr = 0;
+    while  (ctr < mystrlen((destination))) {
+        dp++;
+        ctr++;
+    }
+    while (*sp && max) {
+        *dp = *sp;
+        dp++;
+        sp++;
+        max--;
+    }
+    return destination;
 }
 
 int mystrcmp(char s1[], char s2[]) {
@@ -93,8 +123,8 @@ int main() {
     //feelin dr. seuss-y today
     char s1[] = "I will pick up the hook and you\'ll see something new, ";
     char s2[] = "for now we shall call them String 1 and String 2.";
-    char s3[strlen(s1) + strlen(s2)];
-    char s4[strlen(s1) + strlen(s2)];
+    char s3[mystrlen(s1) + mystrlen(s2)];
+    char s4[mystrlen(s1) + mystrlen(s2)];
 
     printf("s1: %s \n", s1);
     printf("s2: %s \n\n", s2);
@@ -135,6 +165,4 @@ int main() {
     printf("Testing substring... \n");
     printf("strstr 'will' in s1: %c \n", *strstr(s1, "will"));
     printf("mystrstr 'will' in s1: %c \n", *mystrstr(s1, "will"));
-
-    //i can't remember the last time i put this much effort into making a neat testing for main()
 }
