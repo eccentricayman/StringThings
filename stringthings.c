@@ -77,7 +77,13 @@ char * mystrncat(char destination[], char source[], int max) {
 }
 
 int mystrcmp(char s1[], char s2[]) {
-    return (mystrlen(s1) - mystrlen(s2));
+    char *p1 = s1;
+    char *p2 = s2;
+    while (*p1 == *p2 && *p1 && *p2) {
+        p1++;
+        p2++;
+    }
+    return *p1 - *p2;
 }
 
 char * mystrchr(char string[], char c) {
