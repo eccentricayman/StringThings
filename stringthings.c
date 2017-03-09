@@ -128,9 +128,9 @@ char * mystrstr(char big[], char little[]) {
 int main() {
     //feelin dr. seuss-y today
     char s1[] = "I will pick up the hook and you\'ll see something new, ";
-    char s2[] = "for now we shall call them String 1 and String 2.";
-    char s3[mystrlen(s1) + mystrlen(s2)];
-    char s4[mystrlen(s1) + mystrlen(s2)];
+    char s2[200] = "for now we shall call them String 1 and String 2.";
+    char s3[mystrlen(s1) + mystrlen(s2) + 1];
+    char s4[mystrlen(s1) + mystrlen(s2) + 1];
 
     printf("s1: %s \n", s1);
     printf("s2: %s \n\n", s2);
